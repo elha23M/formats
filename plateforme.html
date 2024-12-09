@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Visualization Platform</title>
+  <style>
+    /* Couleurs principales */
+    /* Couleurs principales */
+:root {
+  --dark-gray: #212632;
+  --off-white: #fdfdfc;
+  --light-gray: #d1cec6;
+  --beige: #c0baaf;
+  --brown: #6d6054;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: var(--dark-gray);
+  background-color: var(--off-white);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: var(--dark-gray);
+  padding: 20px 0;
+  color: var(--off-white);
+  height: 50px; /* Taille fixe pour l'en-tête */
+  display: flex;
+  align-items: center;
+}
+
+header .logo {
+  display: flex;
+  align-items: center; /* Aligne verticalement le logo et le texte */
+  justify-content: space-between; /* Gère l'espacement avec la navigation */
+}
+
+header .logo img {
+  height: 170px; /* Ajustez si nécessaire */
+  width: auto;
+  margin-right: 0%; /* Réduisez l'espace entre le logo et le texte */
+}
+
+header .company-name {
+  font-size: 1.2rem; /* Ajustez la taille du texte */
+  color: rgb(156, 192, 206); /* Couleur du texte */
+  font-weight: bold; /* Texte en gras */
+  /* Empêche le texte de se diviser sur plusieurs lignes */
+}
+
+header nav {
+  margin-left: auto; /* Place la navigation à droite */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: var(--off-white);
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+  transform: scale(1.1);
+  color: var(--beige);
+}
+
+.hero {
+  background: url('image.png') no-repeat center center / cover;
+  color: var(--dark-gray);
+  padding: 100px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.hero-content {
+  max-width: 600px;
+  
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--dark-gray);
+  text-align: center;
+}
+
+
+.hero p {
+  font-size: 1rem;
+  margin-top: 20px;
+  text-align: center;
+  color: var(--brown);
+}
+
+.hero .btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--dark-gray);
+  color: var(--off-white);
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.hero .btn-primary:hover {
+  background-color: var(--brown);
+  color: var(--off-white);
+  transform: translateY(-3px);
+}
+
+.section {
+  padding: 50px 0;
+  text-align: center;
+  background-image: url('texture.png'); /* Remplacez texture.png par le chemin de votre image */
+  background-repeat: repeat; /* Répète l'image pour couvrir tout l'espace */
+  background-size: auto; /* Taille par défaut pour conserver les dimensions originales */
+  background-color: rgba(255, 255, 255, 0.8); /* Couche blanche semi-transparente */
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--dark-gray);
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: var(--dark-gray);
+  color: var(--off-white);
+  border-radius: 10px;
+  width: 400px; /* Agrandit la carte */
+  padding: 30px; /* Augmente le padding pour plus d'espace à l'intérieur */
+  position: relative;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-circle {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  background-color: var(--off-white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-circle img {
+  width: 60px;
+  height: 50px;
+}
+
+.card h3 {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.card a {
+  display: inline-block;
+  background-color: var(--beige);
+  color: var(--dark-gray);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card a:hover {
+  transform: scale(1.1);
+  background-color: var(--brown);
+  color: var(--off-white);
+}
+
+footer {
+  background-color: var(--dark-gray);
+  color: var(--off-white);
+  text-align: center;
+  padding: 10px 0; /* Réduit le padding */
+}
+
+.footer {
+  background-color: var(--light-gray); /* Couleur d'arrière-plan */
+  color: var(--dark-gray); /* Couleur du texte */
+  padding: 0.4px 0;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  flex: 1;
+}
+
+.footer-logo {
+  height: 230px;  /* Définissez la hauteur souhaitée pour le logo */
+  width: auto;    /* La largeur est ajustée proportionnellement */
+  object-fit: contain; /* Garde les proportions du logo sans le déformer */
+}
+
+.footer-right {
+  flex: 3;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.footer-right a {
+  color: var(--brown); /* Couleur des liens */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-right a:hover {
+  color: var(--dark-gray); /* Couleur au survol */
+}
+
+.top-bar {
+  background-color: var(--off-white); /* Couleur de fond */
+  color: var(black); /* Couleur du texte */
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+.top-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.info-block .icon {
+  height: 24px;
+  width: 24px;
+}
+
+.btn-secondary {
+  background-color: var(--beige); /* Couleur du bouton */
+  color: var(--dark-gray);
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--brown); /* Couleur au survol */
+  color: var(--off-white);
+  transform: translateY(-2px);
+}
+
+/* Ajustement pour la taille de la carte */
+.map-container {
+  width: 70%; /* Occupe toute la largeur disponible */
+  max-width: 1200px; /* Limite la largeur maximale */
+  height: 400px; /* Augmente la hauteur de la carte */
+  margin: 20px auto; /* Centrer la carte avec un espace autour */
+  background-color: #eaeaea; /* Couleur de fond */
+  border-radius: 8px; /* Arrondi des coins */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre autour de la carte */
+  overflow: hidden; /* Empêche le débordement */
+}
+
+.map-container iframe {
+  width: 100%; /* L'iframe prend toute la largeur du conteneur */
+  height: 100%; /* L'iframe prend toute la hauteur du conteneur */
+  border: none; /* Supprime la bordure */
+}
+.data-buttons-section {
+  text-align: center;
+  padding: 5px 10px;
+  background-color: var(--light-gray); /* Couleur d'arrière-plan douce */
+ 
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.data-buttons-section h2 {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: var(--dark-gray);
+}
+
+.data-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Permet d’adapter les boutons sur plusieurs lignes si nécessaire */
+}
+
+.btn-format {
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--dark-gray); /* Couleur de base du bouton */
+  color: var(--off-white); /* Texte en blanc */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-format:hover {
+  background-color: var(--brown); /* Couleur au survol */
+  transform: translateY(-3px); /* Légère élévation au survol */
+  color: var(--off-white); /* Assure une lisibilité optimale */
+}
+
+.btn-format:focus {
+  outline: 2px solid var(--beige); /* Ajout d'un contour pour l'accessibilité */
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Pied supérieur -->
+<div class="top-bar">
+  <div class="container">
+    <div class="info-block">
+      <img src="telephone.png" alt="Icône Chat" class="icon">
+      <span>Contactez-nous : <strong>(+212) 123-456-789</strong></span>
+    </div>
+    <div class="info-block">
+      <img src="horaires.png" alt="Icône Horaire" class="icon">
+      <span>Horaires : Lun-Ven de 8h à 17h</span>
+    </div>
+    <div class="info-block">
+      <img src="Made In Morocco.png" alt="Icône Horaire" class="icon">
+      <span>Made In Morocco</span>
+    </div>
+  </div>
+</div>
+
+<!-- En-tête -->
+<header>
+  <div class="container logo">
+    <img src="2-removebg-preview.png" alt="Logo de l'entreprise">
+    <div class="company-name">
+      Société IHM<br>de la topographie
+    </div>
+    <nav>
+      <ul>
+        <li><a href="file:///C:/Users/Serab/Downloads/leaf/interface.html#formats">Formats</a></li>
+        <li><a href="file:///C:/Users/Serab/Downloads/leaf/interface.html#telechargements">Téléchargements</a></li>
+        <li><a href="file:///C:/Users/Serab/Downloads/leaf/plateforme.html">Visualisation</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+  
+
+<div class="data-buttons-section">
+  <h2>Cliquez pour visualiser un format !</h2>
+  <div class="data-buttons">
+    <button class="btn-format" onclick="loadMap('zarr')">Zarr</button>
+    <button class="btn-format" onclick="loadMap('geoparquet')">GeoParquet</button>
+    <button class="btn-format" onclick="loadMap('cog')">COG</button>
+  </div>
+</div>
+
+  <div class="map-container">
+    <iframe id="map-frame" src="https://elhaam2222222.github.io/map-viewer/cities_enriched2.html"></iframe>
+  </div>
+
+  
+
+  <script>
+    function loadMap(type) {
+      const iframe = document.getElementById('map-frame');
+      if (type === 'zarr') {
+        iframe.src = "https://hindhd.github.io/zarrvisualisation/carte_temp%C3%A9rature_maroc_2015_2050.html";
+      } else if (type === 'geoparquet') {
+        iframe.src = "https://elhaam2222222.github.io/map-viewer/cities_enriched2.html";
+      } else if (type === 'cog') {
+        iframe.src = "https://meryemme.github.io/visualisationCog/cogindex.html?url=https%3A%2F%2Fcog-2024.s3.eu-north-1.amazonaws.com%2Fcog%2Foutput_cog.tif";
+      }
+    }
+  </script>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Plateforme de Données Maroc. Tous droits réservés.</p>
+  </footer>
+  <footer class="footer"data-aos="slide-up">
+    <div class="container footer-container"data-aos="slide-up">
+      <div class="footer-left">
+        <img src="2-removebg-preview.png" alt="Logo" class="footer-logo">
+      </div>
+      <div class="footer-right"data-aos="slide-up">
+        <p>
+          <strong>CRC:</strong> CRC: IHM-000123/MA<br>
+          Plateforme dédiée à la visualisation et au téléchargement des données géospatiales relatives au Maroc, offrant des solutions fiables et efficaces pour vos projets.
+          <a href="#"> Votre partenaire en géospatial</a>
+        </p>
+        <p>
+          <strong>Plateforme de Données Maroc</strong>  <a href="#">Votre Partenaire</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>
